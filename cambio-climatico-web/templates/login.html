@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block titulo %}Ingresar — Un Grano de Arena{% endblock %}
+
+{% block contenido %}
+<section>
+  <div class="contenedor">
+    <h2 class="titulo-seccion" style="text-align:center;">Ingresar a mi cuenta</h2>
+
+    <form class="form-angosto" method="POST" action="{{ url_for('login') }}">
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit" class="btn btn-primario">Ingresar</button>
+    </form>
+
+    <p style="text-align:center; margin-top:18px; font-family: var(--sans); font-size:0.9rem;">
+      ¿Aún no tienes cuenta? <a href="{{ url_for('registro') }}" style="color: var(--coral);">Regístrate aquí</a>
+    </p>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block titulo %}Mi panel — Un Grano de Arena{% endblock %}
+
+{% block contenido %}
+<!-- Página privada: solo se ve si hay sesión iniciada (lo controla @login_requerido en app.py) -->
+<section>
+  <div class="contenedor">
+    <div class="panel-header">
+      <div>
+        <!-- Saluda con el nombre guardado en la sesión al iniciar sesión -->
+        <h2 class="titulo-seccion" style="margin-bottom:0;">Hola, {{ session.get('usuario_nombre') }}</h2>
+        <p style="font-family: var(--sans); font-size:0.85rem; opacity:0.7;">Este es tu panel privado: solo tú ves estos proyectos.</p>
+      </div>
+    </div>
+
+    <!-- Dos columnas: formulario a la izq, tabla de proyectos a la der -->
+    <div class="rejilla" style="grid-template-columns: 1fr 1.3fr; align-items:start;">
+      <div class="tarjeta">
+        <h3>Agregar proyecto de un grupo</h3>
+        <!-- Al enviar, va a /panel/agregar en app.py, que lo guarda en la base de datos -->
+        <form class="campo-form" method="POST" action="{{ url_for('agregar_proyecto') }}">
+          <label for="grupo">Nombre del grupo</label>
+          <input type="text" id="grupo" name="grupo" required>
+
+          <label for="titulo">Nombre del proyecto</label>
+          <input type="text" id="titulo" name="titulo" required>
+
+          <label for="tema">¿En qué consiste?</label>
+          <textarea id="tema" name="tema" rows="3" required></textarea>
+
+          <label for="avance">Avance actual (opcional)</label>
+          <textarea id="avance" name="avance" rows="2"></textarea>
+
+          <button type="submit" class="btn btn-primario">Guardar proyecto</button>
+        </form>
+      </div>
+
+      <div class="tarjeta">
+        <h3>Proyectos registrados</h3>
+        <!-- Si el profesor ya tiene proyectos guardados, los muestra en tabla -->
+        {% if proyectos %}
+        <table class="proyectos">
+          <thead>
+            <tr><th>Grupo</th><th>Proyecto</th><th>Tema</th><th>Avance</th></tr>
+          </thead>
+          <tbody>
+            {% for p in proyectos %}
+            <tr>
+              <td>{{ p['grupo'] }}</td>
+              <td>{{ p['titulo'] }}</td>
+              <td>{{ p['tema'] }}</td>
+              <td>{{ p['avance'] or '—' }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <!-- Mensaje cuando todavía no hay proyectos guardados -->
+        <p>Todavía no has agregado ningún proyecto. Usa el formulario para registrar el primero.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

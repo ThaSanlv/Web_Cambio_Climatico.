@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block titulo %}Un Grano de Arena — Concientización sobre el cambio climático{% endblock %}
+
+{% block contenido %}
+
+<section class="hero">
+  <div class="contenedor">
+    <div>
+      <div class="eyebrow">Proyecto de concientización</div>
+      <h1>El planeta se está calentando. Tu investigación puede ser parte de la solución.</h1>
+      <p class="lead">Una plataforma para profesores y colegios: aprende sobre el cambio climático, súmate al concurso de investigaciones escolares y sigue el avance de tu proyecto.</p>
+      <div class="hero-botones">
+        <a href="{{ url_for('registro') }}" class="btn btn-primario">Registra a tu colegio</a>
+        <a href="#pasos" class="btn btn-secundario">Ver el paso a paso</a>
+      </div>
+    </div>
+    <div class="glaciar-visual">
+      <div class="termometro-linea"></div>
+      <a class="etiqueta-temp" href="{{ url_for('inicio') }}#problema">Efecto invernadero ↑</a>
+      <svg class="iceberg" style="left:15%; width:70px; height:60px; animation-delay:0s;" viewBox="0 0 70 60"><polygon points="10,60 25,10 45,25 60,60" fill="#FFFFFF"/></svg>
+      <svg class="iceberg" style="left:45%; width:90px; height:80px; animation-delay:1.2s;" viewBox="0 0 90 80"><polygon points="10,80 40,5 70,35 85,80" fill="#FFFFFF"/></svg>
+      <svg class="iceberg" style="left:75%; width:55px; height:45px; animation-delay:2s;" viewBox="0 0 55 45"><polygon points="5,45 25,8 50,45" fill="#FFFFFF"/></svg>
+    </div>
+  </div>
+</section>
+
+<section id="problema">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">¿Qué es el cambio climático?</h2>
+    <p class="subtitulo-seccion">Todo comenzó con la revolución industrial, cuando la atmósfera empezó a llenarse de gases como el CO2 y el metano.</p>
+    <div class="rejilla rejilla-3">
+      <div class="tarjeta tarjeta-grande">
+        <div class="num">CAUSA</div>
+        <h3>Gases de efecto invernadero</h3>
+        <p>La quema de petróleo, carbón y gas libera dióxido de carbono (CO<sub>2</sub>) y metano (CH<sub>4</sub>) a la atmósfera. Estos gases atrapan el calor del Sol como una manta gigante, sobrecalentando el planeta.</p>
+      </div>
+      <div class="tarjeta tarjeta-grande">
+        <div class="num">CONSECUENCIA</div>
+        <h3>Un planeta que se desestabiliza</h3>
+        <p>Este calor extra derrite los polos, elevando el nivel del mar y desatando sequías, incendios y huracanes extremos. Además, el exceso de CO<sub>2</sub> acidifica los océanos, destruyendo la vida marina.</p>
+      </div>
+      <div class="tarjeta tarjeta-grande">
+        <div class="num">SOLUCIÓN</div>
+        <h3>Acelerar el cambio</h3>
+        <p>La salida es acelerar la transición energética hacia fuentes renovables (solar y eólica) y proteger los bosques como sumideros de carbono. Tu impacto suma adoptando la economía circular y el transporte limpio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="solucion" class="seccion-oscura">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">¿Cómo frenamos el cambio climático?</h2>
+    <p class="subtitulo-seccion">La clave está en reducir las emisiones de gases de efecto invernadero.</p>
+    <div class="rejilla">
+      <div class="tarjeta">
+        <h3>Energías renovables</h3>
+        <p>Impulsar que la industria adopte fuentes de energía limpias.</p>
+      </div>
+      <div class="tarjeta">
+        <h3>Eficiencia energética</h3>
+        <p>Consumir mejor la energía que ya producimos, sin desperdiciarla.</p>
+      </div>
+      <div class="tarjeta">
+        <h3>Proteger la naturaleza</h3>
+        <p>Cuidar bosques y ecosistemas que capturan CO2 de forma natural.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="concurso">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">¿Sabías que hay una página que te premia por salvar al planeta?</h2>
+    <p class="subtitulo-seccion">Sorteamos premios entre las mejores investigaciones escolares sobre cómo reducir el efecto invernadero, detectar el marketing engañoso (greenwashing) y promover el consumo responsable.</p>
+    <div class="ruleta-envoltorio">
+      <div style="text-align:center;">
+        <div class="ruleta-puntero"></div>
+        <div id="ruleta" class="ruleta"></div>
+      </div>
+      <div>
+        <h3>Gira la ruleta de ideas</h3>
+        <p>¿No sabes por dónde empezar tu investigación? Gira la ruleta y descubre un tema para tu proyecto de curso.</p>
+        <button id="girar-ruleta" class="btn btn-primario">Girar la ruleta</button>
+        <div id="resultado-ruleta"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pasos" class="seccion-oscura">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">Paso a paso para participar</h2>
+    <p class="subtitulo-seccion">Así se desarrolla el proyecto de tu curso, de la idea al resultado final.</p>
+    <ol class="pasos">
+      <li>Elige tu tema con la ruleta de ideas de investigación (energías renovables, greenwashing, huella de carbono, etc).</li>
+      <li>Investiga sobre el tema escogido: causas, datos y posibles soluciones.</li>
+      <li>Haz una lluvia de ideas para tu proyecto (campaña, objeto o aplicación) y registra fotos del proceso.</li>
+      <li>Regístrate en la plataforma con tu colegio y sube el avance de tu grupo.</li>
+      <li>Presenta tu proyecto y participa por los premios del concurso.</li>
+    </ol>
+    <div style="margin-top:28px;">
+      <a href="{{ url_for('registro') }}" class="btn btn-primario">Registrar a mi colegio</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block script_extra %}
+<script>
+  const IDEAS = {{ ideas | tojson }};
+</script>
+{% endblock %}

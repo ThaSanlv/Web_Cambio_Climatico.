@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block titulo %}Registro — Un Grano de Arena{% endblock %}
+
+{% block contenido %}
+<!-- Página donde un profesor crea su cuenta por primera vez -->
+<section>
+  <div class="contenedor">
+    <h2 class="titulo-seccion" style="text-align:center;">Registra a tu colegio</h2>
+    <p class="subtitulo-seccion" style="text-align:center; margin-left:auto; margin-right:auto;">Crea una cuenta para tu curso o colegio y comienza a registrar el avance de tus proyectos.</p>
+
+    <!-- Al enviar, va a /registro en app.py: valida los datos y guarda al profesor en la base de datos -->
+    <form class="form-angosto" method="POST" action="{{ url_for('registro') }}">
+      <label for="nombre">Nombre del profesor o docente a cargo</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="colegio">Colegio</label>
+      <input type="text" id="colegio" name="colegio" required>
+
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" required>
+
+      <!-- minlength="6" exige mínimo 6 caracteres antes de poder enviar el formulario -->
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" name="password" required minlength="6">
+
+      <button type="submit" class="btn btn-primario">Crear cuenta</button>
+    </form>
+
+    <!-- Link de salida por si el profesor ya tenía cuenta creada -->
+    <p style="text-align:center; margin-top:18px; font-family: var(--sans); font-size:0.9rem;">
+      ¿Ya tienes cuenta? <a href="{{ url_for('login') }}" style="color: var(--coral);">Inicia sesión</a>
+    </p>
+  </div>
+</section>
+{% endblock %}
